@@ -57,8 +57,13 @@ class BaseModel():
         Return:
             - dictionary containing all keys/values of __dict__ of the instance
         """
-        instance_dict = self.__dict__.copy()
-        instance_dict['__class__'] = self.__class__.__name__
-        instance_dict['created_at'] = self.created_at.isoformat()
-        instance_dict['updated_at'] = self.updated_at.isoformat()
-        return instance_dict
+        dict_rep = {}
+        time_format = datetime.isoformat
+        for key in self.__dict__:
+            value = self.__dict__[key]
+            if key == "created_at" or key == "updated_at":
+                dict_rep[key] = str(time_format(value))
+            else:
+                dict_rep[key] = value
+        dict_rep["__class__"] = type(self).__name__
+        return dict_rep

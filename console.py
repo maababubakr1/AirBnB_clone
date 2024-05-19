@@ -34,12 +34,11 @@ class HBNBCommand(cmd.Cmd):
             help or detailed help with help <command>"""
         if arg:
             cmd.Cmd.do_help(self, arg)
-            print("")
         else:
             print("Documented commands (type help <topic>):")
             print("========================================")
             print("EOF  help  quit")
-            print("")
+
 
     def do_create(self, arg):
         """Creates a new instance of BaseModel, saves it and prints the id"""
