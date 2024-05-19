@@ -1,13 +1,15 @@
 #!/usr/bi/python3
 """ serializes instances to a JSON file and
-        deserializes JSON file to instances"""
+    deserializes JSON file to instances
+"""
 import json
 from os.path import exists
 
 
 class FileStorage():
     """ serializes instances to a JSON file and
-        deserializes JSON file to instances"""
+        deserializes JSON file to instances
+    """
     __file_path = "file.json"
     __objects = {}
 
@@ -23,6 +25,7 @@ class FileStorage():
         """
         key = ("{}.{}".format(obj.__class__.__name__, obj.id))
         self.__objects[key] = obj
+        self.save()
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
@@ -40,7 +43,7 @@ class FileStorage():
         if exists(self.__file_path):
             with open(self.__file_path, 'r') as file:
                 json_objects = json.load(file)
-                
+
                 from models.engine.get_class import classes
 
                 self.__objects = {}

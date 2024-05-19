@@ -4,4 +4,11 @@ from models.base_model import BaseModel
 
 
 class City(BaseModel):
-        pass
+    """ city class
+
+    Attributes:
+        - name (str): name of city
+        - state_id (str): ID of state where the city is located
+    """
+    name = ""
+    state_id = ""

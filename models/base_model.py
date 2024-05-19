@@ -21,11 +21,11 @@ class BaseModel():
         - *args (tuple): unused
         - **kwargs (dict): key/value piars of attributes
         """
-        if kwargs:
+        if len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key == 'created_at' or key == 'updated_at':
                     value = datetime.fromisoformat(value)
-                if key != '__class__':
+                elif key != '__class__':
                     setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
@@ -35,8 +35,9 @@ class BaseModel():
 
     def __str__(self):
         """Return string implementation of basemodel"""
-        return ("[{}] ({}) {}".format(self.__class__.__name__,
-                                      self.id, self.__dict__))
+        cls_name = type(self).__name__
+        str_rep = "[{}] ({}) {}".format(cls_name, self.id, self.__dict__)
+        return (str_rep)
 
     def save(self):
         """updates the public instance attribute
