@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Contains unittests for Amenity class """
 import unittest
+import os
 from models.base_model import BaseModel
 from models.amenity import Amenity
 
