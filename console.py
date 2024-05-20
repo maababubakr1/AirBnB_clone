@@ -39,7 +39,6 @@ class HBNBCommand(cmd.Cmd):
             print("========================================")
             print("EOF  help  quit")
 
-
     def do_create(self, arg):
         """Creates a new instance of BaseModel, saves it and prints the id"""
         self.non_interactive_check()
